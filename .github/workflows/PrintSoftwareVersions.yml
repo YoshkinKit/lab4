@@ -1,0 +1,16 @@
+name: Print Software Versions
+on: 
+  push:
+    branches: LW4
+jobs: 
+    PrintRustVersion:
+      runs-on: ubuntu-latest
+      steps:
+          - name: Print Rust Version
+            run: rustc --version
+    PrintPostgreSQLVersions:
+      runs-on: ubuntu-24.04
+      needs: [PrintRustVersion]
+      steps:
+          - name: Print PostgreSQL Version
+            run: psql --version
